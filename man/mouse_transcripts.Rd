@@ -3,17 +3,23 @@
 \docType{data}
 \name{mouse_transcripts}
 \alias{mouse_transcripts}
-\title{Mouse Transcript Dataset}
+\title{Mouse Liver Gene Transcripts}
 \format{
-A data frame with 5 rows and 3 variables:
+A data frame with 2,462,371 rows and 5 variables:
+\describe{
+\item{gene}{Gene name for each observation}
+\item{X}{Pixel X coordinate.}
+\item{Y}{Pixel Y coordinate.}
+\item{Count}{# of times gene is observed at given coordinate}
+}
 }
 \source{
-Generated from a CSV file and saved as R data.
+Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
 }
 \usage{
 mouse_transcripts
 }
 \description{
-A dataset containing sample names and scores.
+A dataset containing gene observations labeled with X and Y coordinates and observation counts
 }
 \keyword{datasets}

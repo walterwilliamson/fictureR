@@ -47,14 +47,20 @@ functions, using an example dataset of mouse liver gene expression from
 
 ``` r
 library(fictureR)
-# mouse_anchors <- fictureR::mouse_anchors
-# mouse_transcripts <- fictureR::mouse_transcripts
-# 
-# # Visualization of anchors before variational EM
-# visualizer(mouse_anchors, type = c("anchor"))
-# 
-# # Decoding input data
+mouse_anchors <- fictureR::mouse_anchors
+mouse_transcripts <- fictureR::mouse_transcripts
+
+# Visualization of anchors before variational EM
+visualizer(mouse_anchors, type = c("anchor"))
+```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
+``` r
+
+# Decoding input data
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
+# mouse_output <- fictureR::mouse_output
 # 
 # visualizer(mouse_output, type = c("anchor"))
 ```

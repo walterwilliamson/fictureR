@@ -3,17 +3,19 @@
 \docType{data}
 \name{mouse_anchors}
 \alias{mouse_anchors}
-\title{Mouse Anchor Dataset}
+\title{Mouse Anchors Initial Dataset}
 \format{
-A data frame with 5 rows and 3 variables:
-\describe{
-\item{ID}{Unique identifier for each sample (numeric).}
-\item{Name}{Sample name (character).}
-\item{Score}{Numeric score (numeric).}
+A data frame with 31322 rows and 18 variables:
+#' \describe{
+\item{unit}{Anchor Idenitifier}
+\item{topK}{Initial cell type assignment based on FICTURE model}
+\item{X}{Anchor X coordinate.}
+\item{Y}{Anchor Y coordinate.}
+\item{Count}{# of genes is observed within the anchor space}
 }
 }
 \source{
-Generated from a CSV file and saved as R data.
+Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
 }
 \usage{
 mouse_anchors

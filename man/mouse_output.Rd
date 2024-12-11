@@ -3,22 +3,22 @@
 \docType{data}
 \name{mouse_output}
 \alias{mouse_output}
-\title{Example Dataset}
+\title{Mouse Liver Final Anchor Assignment}
 \format{
-A data frame with 5 rows and 3 variables:
+A data frame with 675 rows and 15 variables:
 \describe{
-\item{ID}{Unique identifier for each person}
-\item{Name}{Person's name}
-\item{Score}{Numeric score}
+\item{topK}{Initial cell type assignment based on FICTURE model}
+\item{X}{Anchor X coordinate.}
+\item{Y}{Anchor Y coordinate.}
 }
 }
 \source{
-Generated from a CSV file and saved as R data.
+Generated from the slda_decoder function.
 }
 \usage{
 mouse_output
 }
 \description{
-A dataset containing sample names and scores.
+A dataset containing final class assignment for each anchor point.
 }
 \keyword{datasets}

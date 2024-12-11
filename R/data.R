@@ -1,33 +1,41 @@
-#' @title Mouse Transcript Dataset
+#' @title Mouse Anchors Initial Dataset
 #'
 #' @description A dataset containing sample names and scores.
 #'
-#' @format A data frame with 5 rows and 3 variables:
-#' @source Generated from a CSV file and saved as R data.
-"mouse_transcripts"
-
-#' @title Mouse Anchor Dataset
-#'
-#' @description A dataset containing sample names and scores.
-#'
-#' @format A data frame with 5 rows and 3 variables:
-#' \describe{
-#'   \item{ID}{Unique identifier for each sample (numeric).}
-#'   \item{Name}{Sample name (character).}
-#'   \item{Score}{Numeric score (numeric).}
+#' @format A data frame with 31322 rows and 18 variables:
+#' #' \describe{
+#'   \item{unit}{Anchor Idenitifier}
+#'   \item{topK}{Initial cell type assignment based on FICTURE model}
+#'   \item{X}{Anchor X coordinate.}
+#'   \item{Y}{Anchor Y coordinate.}
+#'   \item{Count}{# of genes is observed within the anchor space}
 #' }
-#' @source Generated from a CSV file and saved as R data.
+#' @source Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
 "mouse_anchors"
 
-#' @title Example Dataset
+#' @title Mouse Liver Gene Transcripts
 #'
-#' @description A dataset containing sample names and scores.
+#' @description A dataset containing gene observations labeled with X and Y coordinates and observation counts
 #'
-#' @format A data frame with 5 rows and 3 variables:
+#' @format A data frame with 2,462,371 rows and 5 variables:
 #' \describe{
-#'   \item{ID}{Unique identifier for each person}
-#'   \item{Name}{Person's name}
-#'   \item{Score}{Numeric score}
+#'   \item{gene}{Gene name for each observation}
+#'   \item{X}{Pixel X coordinate.}
+#'   \item{Y}{Pixel Y coordinate.}
+#'   \item{Count}{# of times gene is observed at given coordinate}
 #' }
-#' @source Generated from a CSV file and saved as R data.
+#' @source Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
+"mouse_transcripts"
+
+#' @title Mouse Liver Final Anchor Assignment
+#'
+#' @description A dataset containing final class assignment for each anchor point.
+#'
+#' @format A data frame with 675 rows and 15 variables:
+#' \describe{
+#'   \item{topK}{Initial cell type assignment based on FICTURE model}
+#'   \item{X}{Anchor X coordinate.}
+#'   \item{Y}{Anchor Y coordinate.}
+#' }
+#' @source Generated from the slda_decoder function.
 "mouse_output"
