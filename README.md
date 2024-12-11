@@ -45,13 +45,27 @@ Here we show the basic usage of the `slda_decoder` and `visualizer`
 functions, using an example dataset of mouse liver gene expression from
 \[Vizgen MERFISH\]:(<https://info.vizgen.com/mouse-liver-access>)
 
+Due to the large size of the dataset and slow nature of our function, we
+have used a subset of the data for demonstration purposes.
+
 ``` r
 library(fictureR)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 mouse_anchors <- fictureR::mouse_anchors
 mouse_transcripts <- fictureR::mouse_transcripts
 
-# Visualization of anchors before variational EM
-visualizer(mouse_anchors, type = c("anchor"))
+# Visualization of anchors before variational EM, subsetting to a small region
+visualizer(mouse_anchors %>% filter(x >= 6690.1, x <= 6790.1,
+                                    y >= 6772, y <= 6872), 
+           type = c("anchor"))
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -59,8 +73,14 @@ visualizer(mouse_anchors, type = c("anchor"))
 ``` r
 
 # Decoding input data
+
+mouse_output <- fictureR::mouse_output
+# Generated with the following code
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
-# mouse_output <- fictureR::mouse_output
-# 
-# visualizer(mouse_output, type = c("anchor"))
+
+
+# Updated anchor assignments following decoding
+visualizer(mouse_output, type = c("anchor"))
 ```
+
+<img src="man/figures/README-example-2.png" width="100%" />

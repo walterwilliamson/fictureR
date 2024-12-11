@@ -13,15 +13,10 @@
 
 slda_decoder <- function(transcripts, anchor, scale = 100){
 
-  xmax <- max(transcripts$X)
-  xmin <- min(transcripts$X)
-  ymax <- max(transcripts$Y)
-  ymin <- min(transcripts$Y)
+  x_range <- range(transcripts$X)[1] + c(0, scale)
+  y_range <- range(transcripts$Y)[1] + c(0, scale)
 
-  x_range <- c(xmin,xmin + scale)
-  y_range <- c(ymin,ymin + scale)
-
-  #subsetting data
+  # Subset transcripts and anchor data based on the defined ranges
   transcripts <- transcripts %>%
     filter(X >= x_range[1], X <= x_range[2], Y >= y_range[1], Y <= y_range[2])
 
