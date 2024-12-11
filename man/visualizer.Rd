@@ -17,6 +17,3 @@ Plotted data
 \description{
 This function plots anchor or pixel level data, where each color represents a different class.
 }
-\examples{
-visualizer(data, type = "anchor")
-}

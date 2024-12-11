@@ -4,19 +4,18 @@
 \alias{slda_decoder}
 \title{Decode the spatial transcriptomics data using the anchor-based method}
 \usage{
-slda_decoder(transcripts, anchor)
+slda_decoder(transcripts, anchor, scale = 100)
 }
 \arguments{
 \item{transcripts}{A data frame containing pixel level spatial transcriptomics data.}
 
 \item{anchor}{A data frame containing initial anchor level assignments and probabilities.}
+
+\item{scale}{The scale of the dimension of filtering.}
 }
 \value{
 Updated anchor level data after decoding.
 }
 \description{
 This function decodes the spatial transcriptomics data using the anchor-based method.
-}
-\examples{
-slda_decoder(transcripts, anchor)
 }

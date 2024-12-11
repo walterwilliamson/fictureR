@@ -5,9 +5,9 @@
 #' @param data A data frame containing coordinate and class assignment data
 #' @param type Specifies whether the data is anchor or pixel level
 #' @return Plotted data
+#' @import ggplot2
 #' @export
-#' @examples
-#' visualizer(data, type = "anchor")
+
 
 visualizer <- function(data, type = c("anchor", "pixel")){
   if(type == "anchor"){
@@ -17,7 +17,7 @@ visualizer <- function(data, type = c("anchor", "pixel")){
       label = as.factor(data[,"updated_class"]) # change it to factor
     )
     # plot the anchor before the update
-    ggplot(plot_data, aes(x = x, y = y, color = label)) +
+    ggplot(plot_data, aes(x = plot_data$x, y = plot_data$y, color = plot_data$label)) +
       geom_point(size = 3, alpha = 0.8) +
       scale_color_brewer(palette = "Set3") +
       theme_minimal() +

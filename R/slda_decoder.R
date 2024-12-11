@@ -4,26 +4,29 @@
 #'
 #' @param transcripts A data frame containing pixel level spatial transcriptomics data.
 #' @param anchor A data frame containing initial anchor level assignments and probabilities.
+#' @param scale The scale of the dimension of filtering.
 #' @return Updated anchor level data after decoding.
+#' @import FNN
+#' @import dplyr
 #' @export
-#' @examples
-#' slda_decoder(transcripts, anchor)
 
-slda_decoder <- function(transcripts, anchor){
+
+slda_decoder <- function(transcripts, anchor, scale = 100){
 
   xmax <- max(transcripts$X)
   xmin <- min(transcripts$X)
   ymax <- max(transcripts$Y)
   ymin <- min(transcripts$Y)
 
-  x_range <- c(xmin,xmin+100)
-  y_range <- c(ymin,ymin+100)
+  x_range <- c(xmin,xmin + scale)
+  y_range <- c(ymin,ymin + scale)
 
   #subsetting data
-  transcripts <- transcripts[transcripts[, "X"] >= x_range[1] & transcripts[, "X"] <= x_range[2] &
-                               transcripts[, "Y"] >= y_range[1] & transcripts[, "Y"] <= y_range[2], ]
-  anchor <- anchor[anchor[, "x"] >= x_range[1] & anchor[, "x"] <= x_range[2] &
-                     anchor[, "y"] >= y_range[1] & anchor[, "y"] <= y_range[2], ]
+  transcripts <- transcripts %>%
+    filter(X >= x_range[1], X <= x_range[2], Y >= y_range[1], Y <= y_range[2])
+
+  anchor <- anchor %>%
+    filter(x >= x_range[1], x <= x_range[2], y >= y_range[1], y <= y_range[2])
 
   #update rownames
   rownames(transcripts) <- 1:nrow(transcripts)

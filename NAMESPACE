@@ -2,3 +2,6 @@
 
 export(slda_decoder)
 export(visualizer)
+import(FNN)
+import(dplyr)
+import(ggplot2)
