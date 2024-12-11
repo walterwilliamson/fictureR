@@ -32,43 +32,29 @@ high-resolution studies
 
 ## Installation
 
-You can install the development version of fictureR from
-[GitHub](https://github.com/) with:
+You can install the development version of fictureR from Github with:
 
 ``` r
-# install.packages("pak")
-pak::pak("walterwilliamson/fictureR")
+# install.packages("devtools")
+devtools::install_github("walterwilliamson/fictureR")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Here we show the basic usage of the `slda_decoder` and `visualizer`
+functions, using an example dataset of mouse liver gene expression from
+\[Vizgen MERFISH\]:(<https://info.vizgen.com/mouse-liver-access>)
 
 ``` r
 library(fictureR)
-## basic example code
+# mouse_anchors <- fictureR::mouse_anchors
+# mouse_transcripts <- fictureR::mouse_transcripts
+# 
+# # Visualization of anchors before variational EM
+# visualizer(mouse_anchors, type = c("anchor"))
+# 
+# # Decoding input data
+# mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
+# 
+# visualizer(mouse_output, type = c("anchor"))
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.

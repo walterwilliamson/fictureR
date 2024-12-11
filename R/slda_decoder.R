@@ -84,7 +84,7 @@ slda_decoder <- function(transcripts, anchor, scale = 100){
   # Update the anchor class labels based on the highest probability
   anchor_labels_updated <- max.col(anchor_probs_updated, ties.method = "first")
 
-  return(data.frame(x = anchor$x, y = anchor$y, updated_class = anchor_labels_updated,
+  return(data.frame(x = anchor$x, y = anchor$y, topK = anchor_labels_updated,
                     updated_probs = anchor_probs_updated))
 }
 

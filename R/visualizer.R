@@ -14,10 +14,10 @@ visualizer <- function(data, type = c("anchor", "pixel")){
     plot_data <- data.frame(
       x = data[,"x"],
       y = data[,"y"],
-      label = as.factor(data[,"updated_class"]) # change it to factor
+      label = as.factor(data[,"topK"]) # change it to factor
     )
     # plot the anchor before the update
-    ggplot(plot_data, aes(x = plot_data$x, y = plot_data$y, color = plot_data$label)) +
+    ggplot(plot_data, aes(x = x, y = y, color = label)) +
       geom_point(size = 3, alpha = 0.8) +
       scale_color_brewer(palette = "Set3") +
       theme_minimal() +
