@@ -57,29 +57,61 @@ slda_decoder <- function(transcripts, anchor, scale = 100){
   # radius of the anchor
   hex_radius <- 8
 
-  dist_matrix <- sqrt((outer(transcripts$X, anchor$x, "-")^2) +
-                        (outer(transcripts$Y, anchor$y, "-")^2))
-
-  # Identify which transcripts fall within the hex radius of each anchor
-  in_hex <- dist_matrix <= hex_radius
-
-  # Update anchor probabilities based on surrounding transcript probabilities
+  # update the anchor
   anchor_probs_updated <- as.data.frame(matrix(0, nrow = nrow(anchor), ncol = 12))
 
   for (i in 1:nrow(anchor)) {
-    samples_in_hex <- sample_probs[in_hex[, i], ]
 
+    anchor_x <- anchor[i, "x"]
+    anchor_y <- anchor[i, "y"]
+
+    # calculate dist
+    distances <- sqrt((transcripts[, "X"] - anchor_x)^2 +
+                        (transcripts[, "Y"] - anchor_y)^2)
+
+    # get all the pixel point in the dist
+    in_hex <- distances <= hex_radius
+    samples_in_hex <- sample_probs[in_hex, ]
+
+    # update the probs
     if (nrow(samples_in_hex) > 0) {
       anchor_probs_updated[i, ] <- colMeans(samples_in_hex)
     } else {
-      anchor_probs_updated[i, ] <- anchor_probs[i, ]
+      anchor_probs_updated[i, ] <- list(anchor_probs[i, ])
     }
   }
 
-  # Update the anchor class labels based on the highest probability
+  # update the label
   anchor_labels_updated <- max.col(anchor_probs_updated, ties.method = "first")
 
-  return(data.frame(x = anchor$x, y = anchor$y, topK = anchor_labels_updated,
-                    updated_probs = anchor_probs_updated))
+  # create result dataframe
+  anchor_data_updated <- data.frame(
+    x = anchor[, "x"],
+    y = anchor[, "y"],
+    topK = anchor_labels_updated,
+    updated_probs = anchor_probs_updated
+  )
+
+  # get updated anchor probs for each class
+  updated_anchor_probs <- anchor[, 7:18]
+
+  # calculate the probs for each pixel with updated anchor label
+  updated_sample_probs <- t(sapply(1:nrow(transcripts), function(i) {
+    neighbor_probs <- anchor_probs_updated[neighbor_indices[i, ], ]
+    colSums(neighbor_probs * weights[i, ])
+  }))
+
+
+  colnames(updated_sample_probs) <- paste0("class_prob_", 1:12)
+  updated_sample_probs <- as.data.frame(updated_sample_probs)
+
+  updated_pixel_data <- data.frame(
+    x = transcripts[, "X"],
+    y = transcripts[, "Y"],
+    topK = as.factor(max.col(updated_sample_probs, ties.method = "first")),
+    updated_probs = updated_sample_probs
+  )
+
+  return(list(anchor = anchor_data_updated, pixel = updated_pixel_data))
 }
 

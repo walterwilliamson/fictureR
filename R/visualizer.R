@@ -11,25 +11,38 @@
 
 visualizer <- function(data, type = c("anchor", "pixel")){
   if(type == "anchor"){
-    plot_data <- data.frame(
-      x = data[,"x"],
-      y = data[,"y"],
-      label = as.factor(data[,"topK"]) # change it to factor
-    )
-    # plot the anchor before the update
-    ggplot(plot_data, aes(x = x, y = y, color = label)) +
+    p <- ggplot(data, aes(x = x, y = y, color = as.factor(topK))) +
       geom_point(size = 3, alpha = 0.8) +
-      scale_color_brewer(palette = "Set3") +
+      scale_color_brewer(palette = "Set2") +
       theme_minimal() +
       labs(
         title = "Anchor Points",
         x = "X Coordinate",
         y = "Y Coordinate",
-        color = "Label"
+        color = "Anchor Label"
       ) +
       theme(
         text = element_text(size = 12),
         legend.position = "right"
       )
+    print(p)
+  }
+
+  else if(type == "pixel"){
+    p <- ggplot(data, aes(x = x, y = y, color = as.factor(topK))) +
+      geom_point(size = 0.5, alpha = 0.8) +
+      scale_color_brewer(palette = "Set2") +
+      theme_minimal() +
+      labs(
+        title = "Pixel Points",
+        x = "X Coordinate",
+        y = "Y Coordinate",
+        color = "Class"
+      ) +
+      theme(
+        text = element_text(size = 12),
+        legend.position = "right"
+      )
+    print(p)
   }
 }

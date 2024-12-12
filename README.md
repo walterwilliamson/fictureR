@@ -50,6 +50,8 @@ have used a subset of the data for demonstration purposes.
 
 ``` r
 library(fictureR)
+#> Warning: replacing previous import 'dplyr::count' by 'matrixStats::count' when
+#> loading 'fictureR'
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
@@ -78,9 +80,10 @@ mouse_output <- fictureR::mouse_output
 # Generated with the following code
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
 
-
-# Updated anchor assignments following decoding
-visualizer(mouse_output, type = c("anchor"))
+# 
+# # Updated anchor assignments following decoding
+# visualizer(mouse_output$anchor, type = c("anchor"))
+# 
+# # Visualization of pixel data following decoding
+# visualizer(mouse_output$pixel, type = c("pixel"))
 ```
-
-<img src="man/figures/README-example-2.png" width="100%" />

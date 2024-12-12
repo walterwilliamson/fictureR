@@ -6,7 +6,7 @@
 \title{Mouse Anchors Initial Dataset}
 \format{
 A data frame with 31322 rows and 18 variables:
-#' \describe{
+\describe{
 \item{unit}{Anchor Idenitifier}
 \item{topK}{Initial cell type assignment based on FICTURE model}
 \item{X}{Anchor X coordinate.}
@@ -18,7 +18,7 @@ A data frame with 31322 rows and 18 variables:
 Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
 }
 \usage{
-mouse_anchors
+data(mouse_updated_anchor)
 }
 \description{
 A dataset containing sample names and scores.

@@ -62,7 +62,11 @@ mouse_output <- fictureR::mouse_output
 # Generated with the following code
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
 
+# 
+# # Updated anchor assignments following decoding
+# visualizer(mouse_output$anchor, type = c("anchor"))
+# 
+# # Visualization of pixel data following decoding
+# visualizer(mouse_output$pixel, type = c("pixel"))
 
-# Updated anchor assignments following decoding
-visualizer(mouse_output, type = c("anchor"))
 ```

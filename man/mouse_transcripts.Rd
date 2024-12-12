@@ -17,7 +17,7 @@ A data frame with 2,462,371 rows and 5 variables:
 Sourced from the original python FICTURE example and Vizgen MERFISH Mouse Liver Map.
 }
 \usage{
-mouse_transcripts
+data(mouse_updated_anchor)
 }
 \description{
 A dataset containing gene observations labeled with X and Y coordinates and observation counts
