@@ -3,9 +3,9 @@
 
 # fictureR
 
-# fictureR: FICTURE from Si et al. 2023 in R
+# fictureR: FICTURE from Si et al. 2024 in R
 
-`fictureR` is an R implementation of the **FICTURE** method, designed to
+`fictureR` is an R implementation of the **FICTURE** method from Si et al. 2024, designed to
 efficiently handle high-resolution spatial transcriptomics (ST) data.
 This package focuses on **variational Expectation-Maximization (EM)
 steps** and attempts to perform **Latent Dirichlet Allocation (LDA)
