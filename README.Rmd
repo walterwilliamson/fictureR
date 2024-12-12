@@ -57,16 +57,13 @@ visualizer(mouse_anchors %>% filter(x >= 6690.1, x <= 6790.1,
            type = c("anchor"))
 
 # Decoding input data
-
-mouse_output <- fictureR::mouse_output
-# Generated with the following code
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
 
+
+# Updated anchor assignments following decoding
+visualizer(fictureR::mouse_updated_anchor, type = c("anchor"))
 # 
-# # Updated anchor assignments following decoding
-# visualizer(mouse_output$anchor, type = c("anchor"))
-# 
-# # Visualization of pixel data following decoding
-# visualizer(mouse_output$pixel, type = c("pixel"))
+# Visualization of pixel data following decoding
+visualizer(fictureR::mouse_pixel, type = c("pixel"))
 
 ```

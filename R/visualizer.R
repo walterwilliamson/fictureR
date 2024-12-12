@@ -13,7 +13,7 @@ visualizer <- function(data, type = c("anchor", "pixel")){
   if(type == "anchor"){
     p <- ggplot(data, aes(x = x, y = y, color = as.factor(topK))) +
       geom_point(size = 3, alpha = 0.8) +
-      scale_color_brewer(palette = "Set2") +
+      scale_color_brewer(palette = "Set3") +
       theme_minimal() +
       labs(
         title = "Anchor Points",
@@ -31,7 +31,7 @@ visualizer <- function(data, type = c("anchor", "pixel")){
   else if(type == "pixel"){
     p <- ggplot(data, aes(x = x, y = y, color = as.factor(topK))) +
       geom_point(size = 0.5, alpha = 0.8) +
-      scale_color_brewer(palette = "Set2") +
+      scale_color_brewer(palette = "Set3") +
       theme_minimal() +
       labs(
         title = "Pixel Points",
