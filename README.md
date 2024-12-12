@@ -68,10 +68,6 @@ mouse_transcripts <- fictureR::mouse_transcripts
 visualizer(mouse_anchors %>% filter(x >= 6690.1, x <= 6790.1,
                                     y >= 6772, y <= 6872), 
            type = c("anchor"))
-#> Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
-#> Returning the palette you asked for with that many colors
-#> Warning: Removed 48 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -81,13 +77,8 @@ visualizer(mouse_anchors %>% filter(x >= 6690.1, x <= 6790.1,
 # Decoding input data
 # mouse_output <- slda_decoder(mouse_transcripts, mouse_anchors, scale = 100)
 
-
 # Updated anchor assignments following decoding
 visualizer(fictureR::mouse_updated_anchor, type = c("anchor"))
-#> Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
-#> Returning the palette you asked for with that many colors
-#> Warning: Removed 19 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" />
@@ -96,10 +87,6 @@ visualizer(fictureR::mouse_updated_anchor, type = c("anchor"))
 # 
 # Visualization of pixel data following decoding
 visualizer(fictureR::mouse_pixel, type = c("pixel"))
-#> Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set2 is 8
-#> Returning the palette you asked for with that many colors
-#> Warning: Removed 757 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
 ```
 
 <img src="man/figures/README-example-3.png" width="100%" />
